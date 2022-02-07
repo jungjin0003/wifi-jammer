@@ -1,8 +1,10 @@
 #Makefile
-all: deauth-attack
+all: wifi-jammer
 
-deauth-attack:
-					g++ main.cpp deauth-attack.cpp -o deauth-attack -lpcap
+wifi-jammer:
+				gcc -c iw/iwlib.c -o iwlib.o -lm
+				g++ main.cpp wifi-jammer.cpp iwlib.o -o wifi-jammer -lpcap -lpthread
 
 clean:
-		rm -f deauth-attack
+		rm -f iwlib.o
+		rm -f wifi-jammer
